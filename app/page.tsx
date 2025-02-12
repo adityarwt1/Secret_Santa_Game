@@ -139,7 +139,7 @@ export default function SecretSanta() {
     <motion.div initial={{ y: -30, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ type: "spring", stiffness: 120 }}
-      className="container mx-auto py-10 space-y-8">
+       className="container mx-auto py-10 space-y-8">
       <Card>
         <CardHeader>
           <CardTitle>Secret Santa Assignment System</CardTitle>
@@ -242,9 +242,9 @@ export default function SecretSanta() {
         </CardContent>
       </Card>
       <motion.div initial={{ y: -30, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ type: "spring", stiffness: 120 }}
-        className="flex justify-between w-full">
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ type: "spring", stiffness: 120 }}
+ className="flex justify-between w-full">
         <div className="flex items-center justify-between"><Link href="https://github.com/adityarwt1/Secret_Santa_Game" target="_blank">GitHub Repo<Image alt="Github Image" src="/github.svg" width={50} height={100} /></Link> </div>
         <div>Made By Aditya Rawat (92244524565)</div>
       </motion.div>
