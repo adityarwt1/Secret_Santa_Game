@@ -2,9 +2,12 @@
 // improting module to use in this project by the using shadcn ui to make this project
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
+import { motion } from "framer-motion";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Upload, Download, RefreshCw } from "lucide-react"
+import Link from "next/link"
+import Image from "next/image"
 
 // declaration of string according to the rule of type script
 interface Employee {
@@ -55,7 +58,7 @@ export default function SecretSanta() {
   }
 
 
-//// Uploads a previous assignments CSV to the backend and updates the state.
+  //// Uploads a previous assignments CSV to the backend and updates the state.
   const handlePreviousFile = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0] /// 0 for treat the file with binary object module (blob)
     if (!file) return
@@ -133,7 +136,10 @@ export default function SecretSanta() {
   }
 
   return (
-    <div className="container mx-auto py-10 space-y-8">
+    <motion.div initial={{ y: -30, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ type: "spring", stiffness: 120 }}
+      className="container mx-auto py-10 space-y-8">
       <Card>
         <CardHeader>
           <CardTitle>Secret Santa Assignment System</CardTitle>
@@ -235,7 +241,14 @@ export default function SecretSanta() {
           )}
         </CardContent>
       </Card>
-    </div>
+      <motion.div initial={{ y: -30, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ type: "spring", stiffness: 120 }}
+        className="flex justify-between w-full">
+        <div className="flex items-center justify-between"><Link href="https://github.com/adityarwt1/Secret_Santa_Game" target="_blank">GitHub Repo<Image alt="Github Image" src="/github.svg" width={50} height={100} /></Link> </div>
+        <div>Made By Aditya Rawat (92244524565)</div>
+      </motion.div>
+    </motion.div>
   )
 }
 
