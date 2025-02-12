@@ -3,33 +3,33 @@ import Link from "next/link";
 
 const Navbar = () => {
   return (
-    <nav className="bg-red-600 text-white py-4 px-6 flex justify-between items-center shadow-md">
-      <div className="text-xl font-bold">
-        <Link href="/">Acme Secret Santa</Link>
+    <nav className="bg-white text-black py-4 px-6 flex justify-between items-center border-b shadow-sm">
+      <div className="text-xl font-semibold">
+        <Link href="/">Secret Santa (Acme)</Link>
       </div>
-      <ul className="flex space-x-6">
+      <ul className="flex space-x-6 text-gray-700">
         <li>
-          <Link href="/dashboard" className="hover:underline">
+          <Link href="/dashboard" className="hover:text-black">
             Dashboard
           </Link>
         </li>
         <li>
-          <Link href="/participants" className="hover:underline">
+          <Link href="/participants" className="hover:text-black">
             Participants
           </Link>
         </li>
         <li>
-          <Link href="/assignments" className="hover:underline">
+          <Link href="/assignments" className="hover:text-black">
             Assignments
           </Link>
         </li>
         <li>
-          <Link href="/rules" className="hover:underline">
+          <Link href="/rules" className="hover:text-black">
             Rules & Guidelines
           </Link>
         </li>
         <li>
-          <Link href="/profile" className="hover:underline">
+          <Link href="/profile" className="hover:text-black">
             My Profile
           </Link>
         </li>
