@@ -140,44 +140,45 @@ export default function SecretSanta() {
       animate={{ y: 0, opacity: 1 }}
       transition={{ type: "spring", stiffness: 120 }}
        className="container mx-auto py-10 space-y-8">
-      <Card>
-        <CardHeader>
-          <CardTitle>Secret Santa Assignment System</CardTitle>
-          <CardDescription>
-            Upload employee list and previous assignments to generate new Secret Santa pairs
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-6">
-          <div className="grid md:grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <label className="block text-sm font-medium">Employee List (CSV)</label>
-              <Button
-                variant="outline"
-                className="w-full"
-                onClick={() => document.getElementById("input-file")?.click()}
-              >
-                <Upload className="w-4 h-4 mr-2" />
-                Upload Employee List
-              </Button>
-              <input id="input-file" type="file" accept=".csv" className="hidden" onChange={handleInputFile} />
-            </div>
-            <div className="space-y-2">
-              <label className="block text-sm font-medium">Previous Assignments (CSV)</label>
-              <Button
-                variant="outline"
-                className="w-full"
-                onClick={() => document.getElementById("previous-file")?.click()}
-              >
-                <Upload className="w-4 h-4 mr-2" />
-                Upload Previous Assignments
-              </Button>
-              <input id="previous-file" type="file" accept=".csv" className="hidden" onChange={handlePreviousFile} />
-            </div>
+       <Card className="w-full max-w-4xl mx-auto p-4 sm:p-6 md:p-8">
+      <CardHeader>
+        <CardTitle className="text-xl md:text-2xl">Secret Santa Assignment System</CardTitle>
+        <CardDescription className="text-sm md:text-base">
+          Upload employee list and previous assignments to generate new Secret Santa pairs
+        </CardDescription>
+      </CardHeader>
+      <CardContent className="space-y-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="space-y-2">
+            <label className="block text-sm font-medium">Employee List (CSV)</label>
+            <Button
+              variant="outline"
+              className="w-full"
+              onClick={() => document.getElementById("input-file")?.click()}
+            >
+              <Upload className="w-4 h-4 mr-2" />
+              Upload Employee List
+            </Button>
+            <input id="input-file" type="file" accept=".csv" className="hidden" onChange={handleInputFile} />
           </div>
+          <div className="space-y-2">
+            <label className="block text-sm font-medium">Previous Assignments (CSV)</label>
+            <Button
+              variant="outline"
+              className="w-full"
+              onClick={() => document.getElementById("previous-file")?.click()}
+            >
+              <Upload className="w-4 h-4 mr-2" />
+              Upload Previous Assignments
+            </Button>
+            <input id="previous-file" type="file" accept=".csv" className="hidden" onChange={handlePreviousFile} />
+          </div>
+        </div>
 
-          {employees.length > 0 && (
-            <div className="space-y-4">
-              <h3 className="text-lg font-medium">Current Employees</h3>
+        {employees.length > 0 && (
+          <div className="space-y-4">
+            <h3 className="text-lg font-medium">Current Employees</h3>
+            <div className="overflow-x-auto">
               <Table>
                 <TableHeader>
                   <TableRow>
@@ -195,24 +196,26 @@ export default function SecretSanta() {
                 </TableBody>
               </Table>
             </div>
-          )}
-
-          <div className="flex gap-4">
-            <Button onClick={generateAssignments} disabled={!employees.length || loading} className="flex-1">
-              {loading && <RefreshCw className="w-4 h-4 mr-2 animate-spin" />}
-              Generate Assignments
-            </Button>
-            <Button variant="outline" onClick={downloadAssignments} disabled={!assignments.length} className="flex-1">
-              <Download className="w-4 h-4 mr-2" />
-              Download Assignments
-            </Button>
           </div>
+        )}
 
-          {error && <p className="text-sm text-red-500">{error}</p>}
+        <div className="flex flex-col md:flex-row gap-4">
+          <Button onClick={generateAssignments} disabled={!employees.length || loading} className="flex-1">
+            {loading && <RefreshCw className="w-4 h-4 mr-2 animate-spin" />}
+            Generate Assignments
+          </Button>
+          <Button variant="outline" onClick={downloadAssignments} disabled={!assignments.length} className="flex-1">
+            <Download className="w-4 h-4 mr-2" />
+            Download Assignments
+          </Button>
+        </div>
 
-          {assignments.length > 0 && (
-            <div className="space-y-4">
-              <h3 className="text-lg font-medium">Secret Santa Assignments</h3>
+        {error && <p className="text-sm text-red-500">{error}</p>}
+
+        {assignments.length > 0 && (
+          <div className="space-y-4">
+            <h3 className="text-lg font-medium">Secret Santa Assignments</h3>
+            <div className="overflow-x-auto">
               <Table>
                 <TableHeader>
                   <TableRow>
@@ -238,16 +241,30 @@ export default function SecretSanta() {
                 </TableBody>
               </Table>
             </div>
-          )}
-        </CardContent>
-      </Card>
-      <motion.div initial={{ y: -30, opacity: 0 }}
+          </div>
+        )}
+      </CardContent>
+    </Card>
+    <motion.div
+      initial={{ y: -30, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ type: "spring", stiffness: 120 }}
- className="flex justify-between w-full">
-        <div className="flex items-center justify-between"><Link href="https://github.com/adityarwt1/Secret_Santa_Game" target="_blank">GitHub Repo<Image alt="Github Image" src="/github.svg" width={50} height={100} /></Link> </div>
-        <div>Made By Aditya Rawat (92244524565)</div>
-      </motion.div>
+      className="flex flex-col md:flex-row items-center justify-between w-full p-4 bg-gray-900 text-white"
+    >
+      <div className="flex items-center space-x-2">
+        <Link
+          href="https://github.com/adityarwt1/Secret_Santa_Game"
+          target="_blank"
+          className="flex items-center space-x-2 hover:text-gray-400"
+        >
+          <span>GitHub Repo</span>
+          <Image alt="Github Image" src="/github.svg" width={30} height={30} />
+        </Link>
+      </div>
+      <div className="text-sm md:text-base mt-2 md:mt-0 text-center md:text-right">
+        Made By Aditya Rawat (92244524565)
+      </div>
+    </motion.div>
     </motion.div>
   )
 }
