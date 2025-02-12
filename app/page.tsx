@@ -19,7 +19,8 @@ interface Assignment {
   Secret_Child_EmailID: string
 }
 
-const API_URL = "http://localhost:8000"// url of backend 
+const API_URL = "http://localhost:8000"
+
 
 export default function SecretSanta() {
   // collect data from input
