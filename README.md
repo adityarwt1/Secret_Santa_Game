@@ -4,4 +4,6 @@ How to use this:-
 2. open the folder in any IDE like VS code/ cursor
 3. open ide terminal and type npm install
 4. then npm run dev (for start the frontend code)
-5. open new terminal 
+5. open new terminal  python -m uvicorn backend.main:app --reload (this is for run the backend file)
+6. successfully working application of Secret Santa Game.
+7. check the deployed file of secret santa game. link🥇
