@@ -1,11 +1,12 @@
 "use client"
-
+// improting module to use in this project by the using shadcn ui to make this project
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Upload, Download, RefreshCw } from "lucide-react"
 
+// declaration of string according to the rule of type script
 interface Employee {
   Employee_Name: string
   Employee_EmailID: string
@@ -18,15 +19,18 @@ interface Assignment {
   Secret_Child_EmailID: string
 }
 
-const API_URL = "http://localhost:8000"
+const API_URL = "http://localhost:8000"// url of backend 
 
 export default function SecretSanta() {
+  // collect data from input
   const [employees, setEmployees] = useState<Employee[]>([])
   const [previousAssignments, setPreviousAssignments] = useState<Record<string, string>>({})
   const [assignments, setAssignments] = useState<Assignment[]>([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
 
+
+  ///// Uploads an employee list CSV to the backend and updates the state.
   const handleInputFile = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
     if (!file) return
@@ -49,8 +53,10 @@ export default function SecretSanta() {
     }
   }
 
+
+//// Uploads a previous assignments CSV to the backend and updates the state.
   const handlePreviousFile = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0]
+    const file = e.target.files?.[0] /// 0 for treat the file with binary object module (blob)
     if (!file) return
 
     try {
@@ -71,6 +77,11 @@ export default function SecretSanta() {
     }
   }
 
+
+
+
+
+  //// Sends data to the backend to generate Secret Santa assignments and updates the UI.
   const generateAssignments = async () => {
     try {
       setLoading(true)
@@ -98,6 +109,8 @@ export default function SecretSanta() {
     }
   }
 
+
+  /// Converts assignments to a CSV file and downloads it.
   const downloadAssignments = () => {
     if (!assignments.length) return
 
